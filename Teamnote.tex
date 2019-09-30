@@ -1,0 +1,343 @@
+\documentclass[landscape,8pt]{article}
+\linespread{1}
+\usepackage{multicol}
+\setlength{\columnsep}{0.5cm}
+\setlength{\columnseprule}{0.25pt}
+\usepackage{amsmath}
+\usepackage{graphbox}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{subcaption}
+\usepackage{geometry}
+\geometry{a4paper, landscape, margin = 0.6in}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{kotex}
+\usepackage{tabu}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{authblk}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhead[R]{Little Piplup}
+\fancyhead[L]{Seoul National University}
+\usepackage[compact]{titlesec}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\newcommand{\st}{\text{ such that }}
+\newcommand{\for}{\text{ for }}
+\newcommand{\newpara}[1]{\paragraph{#1} \mbox{}\\}
+\everymath{\displaystyle}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\parindent}{0pt}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*1}{*0.5}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\topsep=5pt \partopsep=5pt
+\title{\Huge{\textsf{Little Piplup}}}
+\author{Gratus907(Wonseok Shin), Coffeetea(Jinje Han), DhDroid(Donghyun Son)}
+\date{ }
+
+\begin{document}
+{
+  \setlength{\columnseprule}{0pt}
+  \begin{multicols}{3}\raggedcolumns
+  \vspace*{\fill}
+  \begin{figure}[H]
+  \includegraphics[width=\linewidth]{piplup}
+  \end{figure}
+  \vspace*{\fill}
+  \columnbreak
+  \begin{center}
+  \vspace*{\fill}
+  \huge{\textbf{Little Piplup}\\}
+  \vspace{2em}
+    \LARGE{Contest Teamnote \\}
+   \large{UCPC 2019 ver}
+  \vspace*{\fill}
+  \end{center}
+  \columnbreak
+
+  \vspace*{\fill}
+  \begin{figure}[H]
+  \includegraphics[width=\linewidth]{revplup}
+  \end{figure}
+
+  \vspace*{\fill}
+  \end{multicols}
+}
+
+
+
+
+\newpage
+\maketitle
+\begin{multicols}{3}\raggedcolumns
+\tableofcontents
+\end{multicols}
+\pagebreak
+\begin{multicols}{2}\raggedcolumns
+
+
+\section{Settings}
+
+  \subsection{C++}
+
+\section{Data Structures}
+  \subsection{Segment Tree - Range Minimum}
+     필요한 연산에 따라 적당히 수정해서 쓸 수 있는 SegTree 구현. 현재 range minimum을 기준으로 작성됨.\\
+     주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
+     \verbatiminput{Range_Minimum_Query.cpp}
+
+  \subsection{Segment Tree Lazy Propagation}
+     구간 업데이트 연산을 빠르게 하기 위한 Lazy Propagation이 적용된 SegTree.\\
+     주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
+     \verbatiminput{Segment_Tree_Lazy.cpp}
+    \columnbreak
+  \subsection{Fenwick Tree}
+    \verbatiminput{./code/Data_Structures/Fenwick_Tree.cpp}
+  \subsection{Disjoint Set Union (Union - Find)}
+    \verbatiminput{./code/Data_Structures/Disjoint_Set_Union.cpp}
+
+\columnbreak
+\section{Mathematics}
+  \subsection{Useful Mathematical Formula}
+    \begin{itemize}
+      \item Catalan Number : Number of valid parantheses strings with $n$ pairs
+      \[
+        C_n = \frac{1}{n+1}\binom{2n}{n}
+      \]
+      \item Nim Game : Remember - XOR of all piles.
+      \item Lucas Formula : $\binom{n}{m} = \prod \binom{n_i}{m_i} \mod p$
+    \end{itemize}
+  \subsection{Number of Integer Partition}
+    \verbatiminput{./code/Mathematics/Num_of_Integer_Partition.py}
+
+  \subsection{Binomial Coefficient}
+    Fast-to-Type Binomial coefficient
+
+  \subsection{Extended Euclidean Algorithm}
+    \verbatiminput{./code/Mathematics/Extended_Euclidean_Algorithm.cpp}
+
+  \subsection{Fast Modulo Exponentiation}
+  Calculating \texttt{$x^y$ mod $p$} in $\order{\log y}$ time.
+    \verbatiminput{./code/Mathematics/Fast_Modulo_Exponentiation.cpp}
+
+  \subsection{Miller-Rabin Primality Testing}
+  Base values of $a$ chosen so that results are tested to be correct up to $10^14$.
+    \verbatiminput{./code/Mathematics/Miller_Rabin_Test.cpp}
+
+  \subsection{Pollard-Rho Factorization}
+    \verbatiminput{./code/Mathematics/Pollard_Rho_Algorithm.cpp}
+
+  \subsection{Euler Totient}
+  Calculating number of integers below $n$ which is coprime with $n$.
+    \verbatiminput{./code/Mathematics/Euler_Phi_Function.cpp}
+
+  \subsection{Modular Multiplicative Inverse}
+    \verbatiminput{./code/Mathematics/Modular_Inverse.cpp}
+
+  %\subsection{Kitamasa method}
+
+  %\subsection{Fast Fourier Transform}
+  \columnbreak
+\columnbreak
+\section{Geometry}
+  \subsection{CCW}
+    \verbatiminput{./code/Geometry/CCW.cpp}
+
+  \subsection{Point in polygon}
+    Returns boolean, if point is in the polygon (represented as vector of points).
+    \verbatiminput{./code/Geometry/Point_in_polygon.cpp}
+  \subsection{Length of Segment Union}
+    Length of segment union, from vector of \{start, end\}.
+    \verbatiminput{./code/Geometry/Length_of_Segment_Union.cpp}
+  \subsection{Closest Pair Problem}
+    Requires : Points must be sorted with x-axis.\\
+    Runs in $\mathcal{O}(n \log^2 n)$
+    \verbatiminput{./code/Geometry/Closest_pair.cpp}
+  \subsection{Convex Hull (Graham Scan)}
+    \verbatiminput{./code/Geometry/Graham_Scan.cpp}
+  \subsection{Intersection of Line Segment}
+    \verbatiminput{./code/Geometry/Line_Segment_Intersection.cpp}
+\columnbreak
+
+\section{Graphs}
+  \subsection{Topological Sorting}
+  Topological sorting with dfs
+    \verbatiminput{./code/Graph/Topological_Sort.cpp}
+
+  \subsection{Lowest Common Ancestor}
+  LCA Algorithm by sparse table.
+  minlen : $(x, y)$ 사이를 잇는 간선 중 최소 길이 간선. \\
+  maxlen : $(x, y)$ 사이를 잇는 간선 중 최대 길이 간선.
+    \verbatiminput{./code/Graph/Lowest_Common_Ancestor.cpp}
+
+  \subsection{MST Kruskal Algorithm}
+  Based on Union-Find implementation\\
+  $\order{E \log E}$ if path-compressed Union Find.
+    \verbatiminput{./code/Graph/Kruskal_MST.cpp}
+
+  \subsection{MST Prim Algorithm}
+    \verbatiminput{./code/Graph/Prim_MST.cpp}
+
+  %\subsection{MST Borvuka Algorithm}
+
+  \subsection{Dinic's Algorithm}
+    \verbatiminput{./code/Graph/Dinic.cpp}
+
+  %\subsection{Heavy-Light Decomposition}
+
+  %\subsection{Centroid Decomposition}
+
+  %\subsection{Hungarian Algorithm}
+    %$\order{n^3}$ assignment problem
+\columnbreak
+
+\section{Shortest Path}
+  \subsection{Dijkstra}
+    $\order{E \log V}$ Single-Start-Shortest-Path.\\
+    Not working for graph with minus weight.
+      \verbatiminput{./code/Graph/Dijkstra_Algorithm.cpp}
+
+  \subsection{Bellman Ford}
+    $\order{EV}$ Single-Start-Shortest-Path.\\
+    Not working for graph with minus cycle $\rightarrow$ must detect.
+      \verbatiminput{./code/Graph/Bellman_Ford_Algorithm.cpp}
+
+  \subsection{SPFA Algorithm}
+    Average $\order{E}$, worst $\order{VE}$ time. Average-case improvement of Bellman Ford by using an additional queue. \\
+    $\rightarrow$ 데이터를 누가 짰을지를 생각해 보면 그냥 이런거 집어치우는게 맞을듯. ICPC Preliminary에서나 쓰자.
+
+  \subsection{Floyd-Warshall}
+    Works on adjacency matrix, in $\order{V^3}$.
+      \verbatiminput{./code/Graph/Floyd_Warshall_Algorithm.cpp}
+
+\columnbreak
+
+\section{Dynamic}
+  \subsection{Longest Increasing Subsequence}
+    Find LIS in $\order{n \log n}$ time.
+      \verbatiminput{./code/Dynamic_Programming/Longest_Increasing_Subsequence.cpp}
+
+  \subsection{Largest Sum Subarray}
+    Computes sum of largest sum subarray in $\order{N}$
+      \verbatiminput{./code/Dynamic_Programming/Largest_Maximum_Subarray.cpp}
+
+  \subsection{0-1 Knapsack}
+    \verbatiminput{./code/Dynamic_Programming/0-1_Knapsack.cpp}
+  \subsection{Longest Common Subsequence}
+    \verbatiminput{./code/Dynamic_Programming/Longest_Common_Substring.cpp}
+
+  %\subsection{Edit Distance}
+
+  %\subsection{Convex Hull Trick}
+
+  %\subsection{Divide and Conquer Optimization}
+
+  %\subsection{Knuth Optimization}
+
+\section{String}
+  \subsection{KMP Algorithm}
+    \verbatiminput{./code/String/KMP.cpp}
+  \subsection{Manacher's Algorithm}
+    A[i] = $i$ 번을 중심으로 하는 가장 긴 팰린드롬이 되는 반지름.
+    \verbatiminput{./code/String/Manacher.cpp}
+  \subsection{Trie}
+    \verbatiminput{./code/String/Trie.cpp}
+  \subsection{Rabin-Karp Hashing}
+    Hashmap[$k$]에, 길이가 len인 부분 문자열의 해시값이 $k$ 가 되는 시작점 인덱스 $i$ 를 push.
+    \verbatiminput{./code/String/Rabin-Karp.cpp}
+  %\subsection{Aho-Corasick Algorithm}
+\columnbreak
+
+\section{Miscellaneous}
+  \subsection{Binary and Ternary Search}
+    Preventing stupid mistakes by writing garbage instead of proper binary search.
+    \verbatiminput{./code/Misc/Binary_Search.cpp}
+    Ternary search
+    \verbatiminput{./code/Misc/Ternary_search}
+  \subsection{Useful Bitwise Functions in C++}
+  \begin{verbatim}
+    int __builtin_clz(int x);// number of leading zero
+    int __builtin_ctz(int x);// number of trailing zero
+    int __builtin_clzll(ll x);// number of leading zero
+    int __builtin_ctzll(ll x);// number of trailing zero
+    int __builtin_popcount(int x);// number of 1-bits in x
+    int __builtin_popcountll(ll x);// number of 1-bits in x
+
+    lsb(n): (n & -n); // last bit (smallest)
+    floor(log2(n)): 31 - __builtin_clz(n | 1);
+    floor(log2(n)): 63 - __builtin_clzll(n | 1);
+
+    // compute next perm. ex) 00111, 01011, 01101, 01110, 10011, 10101..
+    ll next_perm(ll v)
+    {
+      ll t = v | (v-1);
+      return (t + 1) | (((~t & -~t) - 1) >> (__builtin_ctz(v) + 1));
+    }
+  \end{verbatim}
+  \subsection{List of Useful Numbers}
+  \begin{verbatim}
+
+    < 10^k    prime   # of prime          < 10^k            prime
+    -------------------------------------------------------------
+    1             7            4          10           9999999967
+    2            97           25          11          99999999977
+    3           997          168          12         999999999989
+    4          9973         1229          13        9999999999971
+    5         99991         9592          14       99999999999973
+    6        999983        78498          15      999999999999989
+    7       9999991       664579          16     9999999999999937
+    8      99999989      5761455          17    99999999999999997
+    9     999999937     50847534          18   999999999999999989
+  \end{verbatim}
+\columnbreak
+
+
+\section{Checkpoints}
+  \subsection{Debugging}
+\begin{itemize}
+  \item $10^5 * 10^5 \Rightarrow \text{INTEGER OVERFLOW}$.
+  \item If unsure with overflow, use \\
+  \texttt{\#define int long long} and stop caring.
+  \item 행렬과 기하의 $i, j$ 인덱스 조심. 헷갈리면 쓰면서 가기.
+  \item output이 특정 수열/OX 형태 : 작은 예제를 Exhasutive Search. 모르는 무언가를 알기 위해서는 데이터가 필요하다.
+\end{itemize}
+  \subsection{Thinking}
+    \begin{itemize}
+      \item 모든 경우를 다 할 수 없나? 왜 안 되지? 시간 복잡도 잘 생각해 보기. 정해의 Target Complexity를 먼저 생각하고 주요 알고리즘들의 Complexity로 짜맞추기.\\
+      예를들어, 쿼리가 30만개 들어온다면 한 쿼리를 적어도 $\log{n}$ 에 처리할 방법이 아무튼 있다는 뜻.
+      \item 단조함수이며, 충분히 빠르게 검증가능한가 : Binary Search.
+      \item 차원이 높은 문제 : 차원 내려서 생각하기. 3 $\rightarrow$ 2.
+      \item 이 문제가 사실 그래프 관련 문제는 아닐까?
+        \begin{itemize}
+          \item 만약 그렇다면, `간선' 과 `정점' 은 각각..?
+          \item 간선과 정점이 몇 개 정도 있는가?
+        \end{itemize}
+      \item 이 문제에 Overlapping Subproblem이 보이나? \\$\rightarrow$ Dynamic Programming 을 적용.
+      \item 답의 상한이 Reasonable 하게 작은가?
+      \item 마지막 생각 : 조금 추하지만 해싱이나 Random \texttt{bitset} 을 이용한 $n^2 / 64$ 같은걸로 뚫을 수 있나?
+    \end{itemize}
+\newpage
+\section*{업데이트 노트 / To-Do}
+\textbf{이 페이지는 실제 인쇄 팀노트에 포함되지 않습니다}
+\begin{itemize}
+  \item 190731 : Rabin-Karp Hashing 추가.
+  \item To-do : LCA 코드에 최단 / 최장 거리 간선, 거리 구하기 추가.
+  \item 190731 : Segment Tree Lazy Propagation 추가.
+  \item 190731 : Segment Tree Struct 구현체로 변경.
+  \item To-do : HLD 코드 넣기.
+  \item To-do : Trie 구현체 두가지 방식 넣기.
+\columnbreak
+\end{itemize}
+\end{multicols}
+\end{document}
