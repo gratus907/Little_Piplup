@@ -75,9 +75,6 @@
   \end{multicols}
 }
 
-
-
-
 \newpage
 \maketitle
 \begin{multicols}{3}\raggedcolumns
@@ -88,26 +85,24 @@
 
 
 \section{Settings}
-
   \subsection{C++}
-
+    \verbatiminput{./code/Header.cpp}
 \section{Data Structures}
   \subsection{Segment Tree - Range Minimum}
-     필요한 연산에 따라 적당히 수정해서 쓸 수 있는 SegTree 구현. 현재 range minimum을 기준으로 작성됨.\\
-     주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
+     필요한 연산에 따라 적당히 수정해서 쓸 수 있는 SegTree 구현. Range minimum을 기준으로 작성.\\
+     배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
      \verbatiminput{./code/Data_Structures/Range_Minimum_Query.cpp}
 
   \subsection{Segment Tree Lazy Propagation}
      구간 업데이트 연산을 빠르게 하기 위한 Lazy Propagation이 적용된 SegTree.\\
      주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
      \verbatiminput{./code/Data_Structures/Segment_Tree_Lazy.cpp}
+    \columnbreak
   \subsection{Fenwick Tree}
     \verbatiminput{./code/Data_Structures/Fenwick_Tree.cpp}
-\pagebreak
   \subsection{Disjoint Set Union (Union - Find)}
     \verbatiminput{./code/Data_Structures/Disjoint_Set_Union.cpp}
 
-\columnbreak
 \section{Mathematics}
   \subsection{Useful Mathematical Formula}
     \begin{itemize}
@@ -118,9 +113,6 @@
       \item Nim Game : Remember - XOR of all piles.
       \item Lucas Formula : $\binom{n}{m} = \prod \binom{n_i}{m_i} \mod p$
     \end{itemize}
-
-  \subsection{Binomial Coefficient}
-    Fast-to-Type Binomial coefficient
 
   \subsection{Extended Euclidean Algorithm}
     \verbatiminput{./code/Mathematics/Extended_Euclidean_Algorithm.cpp}
@@ -144,14 +136,11 @@
     \verbatiminput{./code/Mathematics/Euler_Phi_Function.cpp}
 
 
-  %\subsection{Kitamasa method}
-
   \subsection{Fast Fourier Transform}
     Compute $A(x) * B(x)$ in $O(n\log n)$ time.\\
     Convolution 빠르게 구하기 \[ c_j = \sum_{i = 0}^{j} a_i b_{j-i}\]
     \verbatiminput{./code/Mathematics/Fast_Fourier_Transform.cpp}
   \columnbreak
-\columnbreak
 \section{Geometry}
   \subsection{CCW}
     \verbatiminput{./code/Geometry/CCW.cpp}
@@ -178,8 +167,8 @@
     \verbatiminput{./code/Graph/Topological_Sort.cpp}
 
   \subsection{Lowest Common Ancestor}
-  LCA Algorithm by sparse table.
-  minlen : $(x, y)$ 사이를 잇는 간선 중 최소 길이 간선. \\
+  LCA Algorithm by sparse table.\\
+  minlen : $(x, y)$ 사이를 잇는 간선 중 최소 길이 간선.\\
   maxlen : $(x, y)$ 사이를 잇는 간선 중 최대 길이 간선.
     \verbatiminput{./code/Graph/Lowest_Common_Ancestor.cpp}
 
@@ -190,8 +179,6 @@
 
   \subsection{MST Prim Algorithm}
     \verbatiminput{./code/Graph/Prim_MST.cpp}
-
-  %\subsection{MST Borvuka Algorithm}
 
   \subsection{Dinic's Algorithm}
     \verbatiminput{./code/Graph/Dinic.cpp}
@@ -207,7 +194,7 @@
 \section{Shortest Path}
   \subsection{Dijkstra}
     $\order{E \log V}$ Single-Start-Shortest-Path.\\
-    Not working for graph with minus weight.
+    가중치에 음수 없는거 항상 확인하고 쓰기.
       \verbatiminput{./code/Graph/Dijkstra_Algorithm.cpp}
 
   \subsection{Bellman Ford}
@@ -216,8 +203,9 @@
       \verbatiminput{./code/Graph/Bellman_Ford_Algorithm.cpp}
 
   \subsection{SPFA Algorithm}
-    Average $\order{E}$, worst $\order{VE}$ time. Average-case improvement of Bellman Ford by using an additional queue. \\
-    $\rightarrow$ 데이터를 누가 짰을지를 생각해 보면 그냥 이런거 집어치우는게 맞을듯. ICPC Preliminary에서나 쓰자.
+    Average $\order{E}$, worst $\order{VE}$
+    time. Average-case improvement of Bellman Ford by using an additional queue. 일반적인 상황에서 Bellman ford를 쓰지 말고, 이걸로 미는게 낫다.
+    \verbatiminput{./code/Graph/SPFA.cpp}
 
   \subsection{Floyd-Warshall}
     Works on adjacency matrix, in $\order{V^3}$.
@@ -226,6 +214,10 @@
 \columnbreak
 
 \section{Dynamic}
+  \subsection{다이나믹 프로그래밍 최적화 기법}
+  \subsubsection{Convex Hull Trick}
+  \subsubsection{Knuth Optimization}
+  \subsubsection{Divide and Conquer Optimization}
   \subsection{Longest Increasing Subsequence}
     Find LIS in $\order{n \log n}$ time.
       \verbatiminput{./code/Dynamic_Programming/Longest_Increasing_Subsequence.cpp}
@@ -266,7 +258,9 @@
     Preventing stupid mistakes by writing garbage instead of proper binary search.
     \verbatiminput{./code/Misc/Binary_Search.cpp}
     Ternary search
-    \verbatiminput{./code/Misc/Ternary_search}
+    \verbatiminput{./code/Misc/Ternary_search.cpp}
+  \subsection{GCC Order Statistics Tree}
+    \verbatiminput{./code/Misc/Pbds_OST.cpp}
   \subsection{Useful Bitwise Functions in C++}
   \begin{verbatim}
     int __builtin_clz(int x);// number of leading zero
@@ -308,11 +302,12 @@
 \section{Checkpoints}
   \subsection{Debugging}
 \begin{itemize}
-  \item $10^5 * 10^5 \Rightarrow \text{INTEGER OVERFLOW}$.
+  \item $10^5 * 10^5 \Rightarrow \text{INTEGER OVERFLOW}$. 특히 for 문 안에서 \texttt{i * i < n} 할때 조심하기.
   \item If unsure with overflow, use \\
   \texttt{\#define int long long} and stop caring.
   \item 행렬과 기하의 $i, j$ 인덱스 조심. 헷갈리면 쓰면서 가기.
-  \item output이 특정 수열/OX 형태 : 작은 예제를 Exhasutive Search. 모르는 무언가를 알기 위해서는 데이터가 필요하다.
+  \item Segment Tree, Trie, Fenwick 등 Struct 구현체 사용할 때는 항상 내부의 $n$ 이 제대로 초기화되었는지 확인하기.
+  \item Testcase가 여러 개인 문제는 항상 초기화 문제를 확인하기.
 \end{itemize}
   \subsection{Thinking}
     \begin{itemize}
@@ -327,7 +322,8 @@
         \end{itemize}
       \item 이 문제에 Overlapping Subproblem이 보이나? \\$\rightarrow$ Dynamic Programming 을 적용.
       \item 답의 상한이 Reasonable 하게 작은가?
-      \item 마지막 생각 : 조금 추하지만 해싱이나 Random \texttt{bitset} 을 이용한 $n^2 / 64$ 같은걸로 뚫을 수 있나?
+      \item output이 특정 수열/OX 형태 : 작은 예제를 Exhasutive Search. 모르는 무언가를 알기 위해서는 데이터가 필요하다.
+      \item 마지막 생각 : 조금 추하지만 해싱이나 Random 또는 \texttt{bitset} 을 이용한 $n^2 / 64$ 같은걸로 뚫을 수 있나?
     \end{itemize}
 \newpage
 \section*{업데이트 노트 / To-Do}

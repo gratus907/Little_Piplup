@@ -1,4 +1,3 @@
-//https://www.crocus.co.kr/1089
 struct Edge
 {
     int dest, w;

@@ -16,11 +16,8 @@ Point pts[101010];
 
 int closest_pair(Point p[], int n)
 {
-    //printf("%p call %d\n",p,n);
     if (n==2)
-    {
         return dist(p[0], p[1]);
-    }
     if (n==3)
     {
         return min(dist(p[0],p[1]),
