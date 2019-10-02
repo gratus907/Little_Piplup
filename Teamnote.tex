@@ -61,7 +61,7 @@
   \huge{\textbf{Little Piplup}\\}
   \vspace{2em}
     \LARGE{Contest Teamnote \\}
-   \large{UCPC 2019 ver}
+   \large{ICPC 2019 Internet Preliminary ver}
   \vspace*{\fill}
   \end{center}
   \columnbreak
@@ -95,15 +95,15 @@
   \subsection{Segment Tree - Range Minimum}
      필요한 연산에 따라 적당히 수정해서 쓸 수 있는 SegTree 구현. 현재 range minimum을 기준으로 작성됨.\\
      주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
-     \verbatiminput{Range_Minimum_Query.cpp}
+     \verbatiminput{./code/Data_Structures/Range_Minimum_Query.cpp}
 
   \subsection{Segment Tree Lazy Propagation}
      구간 업데이트 연산을 빠르게 하기 위한 Lazy Propagation이 적용된 SegTree.\\
      주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
-     \verbatiminput{Segment_Tree_Lazy.cpp}
-    \columnbreak
+     \verbatiminput{./code/Data_Structures/Segment_Tree_Lazy.cpp}
   \subsection{Fenwick Tree}
     \verbatiminput{./code/Data_Structures/Fenwick_Tree.cpp}
+\pagebreak
   \subsection{Disjoint Set Union (Union - Find)}
     \verbatiminput{./code/Data_Structures/Disjoint_Set_Union.cpp}
 
@@ -118,8 +118,6 @@
       \item Nim Game : Remember - XOR of all piles.
       \item Lucas Formula : $\binom{n}{m} = \prod \binom{n_i}{m_i} \mod p$
     \end{itemize}
-  \subsection{Number of Integer Partition}
-    \verbatiminput{./code/Mathematics/Num_of_Integer_Partition.py}
 
   \subsection{Binomial Coefficient}
     Fast-to-Type Binomial coefficient
@@ -130,6 +128,9 @@
   \subsection{Fast Modulo Exponentiation}
   Calculating \texttt{$x^y$ mod $p$} in $\order{\log y}$ time.
     \verbatiminput{./code/Mathematics/Fast_Modulo_Exponentiation.cpp}
+
+  \subsection{Modular Multiplicative Inverse}
+    \verbatiminput{./code/Mathematics/Modular_Inverse.cpp}
 
   \subsection{Miller-Rabin Primality Testing}
   Base values of $a$ chosen so that results are tested to be correct up to $10^14$.
@@ -142,12 +143,13 @@
   Calculating number of integers below $n$ which is coprime with $n$.
     \verbatiminput{./code/Mathematics/Euler_Phi_Function.cpp}
 
-  \subsection{Modular Multiplicative Inverse}
-    \verbatiminput{./code/Mathematics/Modular_Inverse.cpp}
 
   %\subsection{Kitamasa method}
 
-  %\subsection{Fast Fourier Transform}
+  \subsection{Fast Fourier Transform}
+    Compute $A(x) * B(x)$ in $O(n\log n)$ time.\\
+    Convolution 빠르게 구하기 \[ c_j = \sum_{i = 0}^{j} a_i b_{j-i}\]
+    \verbatiminput{./code/Mathematics/Fast_Fourier_Transform.cpp}
   \columnbreak
 \columnbreak
 \section{Geometry}

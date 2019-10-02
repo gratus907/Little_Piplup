@@ -1,4 +1,3 @@
-#define ll long long
 ll euler_phi(ll n)
 {
     ll p=2;

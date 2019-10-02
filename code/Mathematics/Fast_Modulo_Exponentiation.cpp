@@ -1,9 +1,3 @@
-/*
-Fast Modulo Exponentiation algorithm
-Runs on O(log y) time,
-calculate x^y mod p
-*/
-
 ll modpow(ll x, ll y, ll p)
 {
     ll res = 1;

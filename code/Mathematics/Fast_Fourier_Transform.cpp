@@ -1,4 +1,3 @@
-//Code from blog.myungwoo.kr
 #include <complex>
 #define sz(v) ((int)(v).size())
 #define all(v) (v).begin(),(v).end()
