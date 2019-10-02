@@ -24,7 +24,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
-
+\usepackage{layout}
 \pagestyle{fancy}
 \fancyhead[R]{Little Piplup}
 \fancyhead[L]{Seoul National University}
@@ -36,14 +36,17 @@
 \newcommand{\newpara}[1]{\paragraph{#1} \mbox{}\\}
 \everymath{\displaystyle}
 \setlength{\parskip}{0pt}
-\setlength{\parsep}{0pt}
+\setlength{\parsep}{-2pt}
 \setlength{\parindent}{0pt}
 \titlespacing{\section}{0pt}{*0}{*0}
 \titlespacing{\subsection}{0pt}{*1}{*0.5}
 \titlespacing{\subsubsection}{0pt}{*0}{*0}
 \topsep=5pt \partopsep=5pt
+\setlength{\headheight}{12pt}
+\setlength{\headsep}{8pt}
+\setlength{\topmargin}{-65pt}
 \title{\Huge{\textsf{Little Piplup}}}
-\author{Gratus907(Wonseok Shin), Coffeetea(Jinje Han), DhDroid(Donghyun Son)}
+\author{Gratus907(Wonseok Shin), Coffeetea(Jinje Han), DHDroid(Donghyun Son)}
 \date{ }
 
 \begin{document}
@@ -95,11 +98,12 @@
 
   \subsection{Segment Tree Lazy Propagation}
      구간 업데이트 연산을 빠르게 하기 위한 Lazy Propagation이 적용된 SegTree.\\
-     주의 : 배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
+     배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
      \verbatiminput{./code/Data_Structures/Segment_Tree_Lazy.cpp}
-    \columnbreak
+
   \subsection{Fenwick Tree}
     \verbatiminput{./code/Data_Structures/Fenwick_Tree.cpp}
+
   \subsection{Disjoint Set Union (Union - Find)}
     \verbatiminput{./code/Data_Structures/Disjoint_Set_Union.cpp}
 
@@ -125,7 +129,7 @@
     \verbatiminput{./code/Mathematics/Modular_Inverse.cpp}
 
   \subsection{Miller-Rabin Primality Testing}
-  Base values of $a$ chosen so that results are tested to be correct up to $10^14$.
+  Base values of $a$ chosen so that results are tested to be correct up to $10^{14}$.
     \verbatiminput{./code/Mathematics/Miller_Rabin_Test.cpp}
 
   \subsection{Pollard-Rho Factorization}
@@ -140,7 +144,7 @@
     Compute $A(x) * B(x)$ in $O(n\log n)$ time.\\
     Convolution 빠르게 구하기 \[ c_j = \sum_{i = 0}^{j} a_i b_{j-i}\]
     \verbatiminput{./code/Mathematics/Fast_Fourier_Transform.cpp}
-  \columnbreak
+
 \section{Geometry}
   \subsection{CCW}
     \verbatiminput{./code/Geometry/CCW.cpp}
@@ -157,9 +161,9 @@
     \verbatiminput{./code/Geometry/Closest_pair.cpp}
   \subsection{Convex Hull (Graham Scan)}
     \verbatiminput{./code/Geometry/Graham_Scan.cpp}
+
   \subsection{Intersection of Line Segment}
     \verbatiminput{./code/Geometry/Line_Segment_Intersection.cpp}
-\columnbreak
 
 \section{Graphs}
   \subsection{Topological Sorting}
@@ -189,7 +193,6 @@
 
   %\subsection{Hungarian Algorithm}
     %$\order{n^3}$ assignment problem
-\columnbreak
 
 \section{Shortest Path}
   \subsection{Dijkstra}
@@ -203,41 +206,43 @@
       \verbatiminput{./code/Graph/Bellman_Ford_Algorithm.cpp}
 
   \subsection{SPFA Algorithm}
-    Average $\order{E}$, worst $\order{VE}$
-    time. Average-case improvement of Bellman Ford by using an additional queue. 일반적인 상황에서 Bellman ford를 쓰지 말고, 이걸로 미는게 낫다.
+    Average $\order{E}$, worst $\order{VE}$.
     \verbatiminput{./code/Graph/SPFA.cpp}
 
   \subsection{Floyd-Warshall}
     Works on adjacency matrix, in $\order{V^3}$.
       \verbatiminput{./code/Graph/Floyd_Warshall_Algorithm.cpp}
 
-\columnbreak
 
 \section{Dynamic}
   \subsection{다이나믹 프로그래밍 최적화 기법}
   \subsubsection{Convex Hull Trick}
+    dp[i] = $\min_{j < i}$ (dp[j] + a[i]b[j]) 이고, $b$가 단조 감소하며, (현재 구현 기준) $a$가 단조 증가할 때, 직선 \texttt{y = b[j]*x + dp[j]}들을 기준으로 해석해서 시간 복잡도를 줄인다.
   \subsubsection{Knuth Optimization}
-  \subsubsection{Divide and Conquer Optimization}
+    dp 점화식이 다음 조건을 만족할 때, $O(n^3)$ 을 $O(n^2)$ 로 줄인다.
+    \begin{itemize}
+      \item dp[i][j] = $\min_{i < k < j}$(dp[i][k] + dp[k][j]) + C[i][j]
+      \item C[a][c] + C[b][d] $\leq$ C[a][d] + C[b][c] $\leq$ 2C[a][d] when $a \leq b \leq c \leq d$.
+    \end{itemize}
+    이때, dp[i][j]가 최소가 되는 $k$는 $k_{(i, j-1)} \leq k_{(i, j)} \leq k_{(i+1, j)}$ 를 만족한다.
+      \verbatiminput{./code/Dynamic_Programming/Knuth_opt.cpp}
   \subsection{Longest Increasing Subsequence}
     Find LIS in $\order{n \log n}$ time.
       \verbatiminput{./code/Dynamic_Programming/Longest_Increasing_Subsequence.cpp}
-
+    Using multiset...
+      \verbatiminput{./code/Dynamic_Programming/Multiset_Shorter_LIS.cpp}
   \subsection{Largest Sum Subarray}
     Computes sum of largest sum subarray in $\order{N}$
       \verbatiminput{./code/Dynamic_Programming/Largest_Maximum_Subarray.cpp}
 
   \subsection{0-1 Knapsack}
-    \verbatiminput{./code/Dynamic_Programming/0-1_Knapsack.cpp}
+    \verbatiminput{./code/Dynamic_Programming/0-1_Knapsack.cpp}\
+
   \subsection{Longest Common Subsequence}
     \verbatiminput{./code/Dynamic_Programming/Longest_Common_Substring.cpp}
 
-  %\subsection{Edit Distance}
-
-  %\subsection{Convex Hull Trick}
-
-  %\subsection{Divide and Conquer Optimization}
-
-  %\subsection{Knuth Optimization}
+  \subsection{Edit Distance}
+    \verbatiminput{./code/Dynamic_Programming/Edit_Distance.cpp}
 
 \section{String}
   \subsection{KMP Algorithm}
@@ -283,7 +288,6 @@
   \end{verbatim}
   \subsection{List of Useful Numbers}
   \begin{verbatim}
-
     < 10^k    prime   # of prime          < 10^k            prime
     -------------------------------------------------------------
     1             7            4          10           9999999967
@@ -298,21 +302,29 @@
   \end{verbatim}
 \columnbreak
 
-
+\pagebreak
 \section{Checkpoints}
   \subsection{Debugging}
 \begin{itemize}
-  \item $10^5 * 10^5 \Rightarrow \text{INTEGER OVERFLOW}$. 특히 for 문 안에서 \texttt{i * i < n} 할때 조심하기.
+  \item $10^5 * 10^5 \Rightarrow \text{OVERFLOW}$. 특히 for 문 안에서 \texttt{i * i < n} 할때 조심하기.
   \item If unsure with overflow, use \\
   \texttt{\#define int long long} and stop caring.
   \item 행렬과 기하의 $i, j$ 인덱스 조심. 헷갈리면 쓰면서 가기.
   \item Segment Tree, Trie, Fenwick 등 Struct 구현체 사용할 때는 항상 내부의 $n$ 이 제대로 초기화되었는지 확인하기.
   \item Testcase가 여러 개인 문제는 항상 초기화 문제를 확인하기.
+  \item iterator 주의 : .end() 는 항상 맨 끝 원소보다 하나 더 뒤의 iterator. erase쓸 때는 iterator++ 관련된 문제들에 주의해야 한다.
+  \item Memory Limit : Local variable은 int 10만개 정도까지만 사용. Global Variable의 경우 128MB면 대략 int 2000만 개까지는 잘 들어간다. long long은 그보다 당연히 적고... stack, queue, map, set 같은 특이한 컨테이너는 100만개를 잡으면 메모리가 버겁지만 vector 100만개는 잡아도 된다.
+  \item Array out of Bound : 배열의 길이는 충분한가? Vector resize를 했다면 그것도 충분할까? 배열의 -1번에 접근한 적은 없는게 확실할까?
 \end{itemize}
   \subsection{Thinking}
     \begin{itemize}
       \item 모든 경우를 다 할 수 없나? 왜 안 되지? 시간 복잡도 잘 생각해 보기. 정해의 Target Complexity를 먼저 생각하고 주요 알고리즘들의 Complexity로 짜맞추기.\\
       예를들어, 쿼리가 30만개 들어온다면 한 쿼리를 적어도 $\log{n}$ 에 처리할 방법이 아무튼 있다는 뜻.
+      \item 그 방법이 뭐지? xxxx한 일을 어떤 시간복잡도에 실행하는 적절한 자료구조가 있다면?
+      \begin{itemize}
+        \item 필요한 게 정렬성이라면 힙이나 map을 쓸 수 있고
+        \item multiset / multimap도 사용할 수 있고.. 느리지만.
+      \end{itemize}
       \item 단조함수이며, 충분히 빠르게 검증가능한가 : Binary Search.
       \item 차원이 높은 문제 : 차원 내려서 생각하기. 3 $\rightarrow$ 2.
       \item 이 문제가 사실 그래프 관련 문제는 아닐까?
@@ -321,21 +333,16 @@
           \item 간선과 정점이 몇 개 정도 있는가?
         \end{itemize}
       \item 이 문제에 Overlapping Subproblem이 보이나? \\$\rightarrow$ Dynamic Programming 을 적용.
+      \item Directed Graph, 특히 Cycle에 관한 문제 : Topological Sorting? (ex : SNUPC 2019 kdh9949)
       \item 답의 상한이 Reasonable 하게 작은가?
       \item output이 특정 수열/OX 형태 : 작은 예제를 Exhasutive Search. 모르는 무언가를 알기 위해서는 데이터가 필요하다.
-      \item 마지막 생각 : 조금 추하지만 해싱이나 Random 또는 \texttt{bitset} 을 이용한 $n^2 / 64$ 같은걸로 뚫을 수 있나?
+      \item 그래프 문제에서, 어떤 ``조건" 이 들어갔을 때 $\to$ 이 문제를 ``정점을 늘림으로써" 단순한 그래프 문제로 바꿀 수 있나? (ex : SNUPC 2018 달빛 여우) 이를테면, 홀짝성에 따라 점을 2배로 늘림으로써?
+      \item DP도 마찬가지. 어떤 조건을 단순화하기 위해 상태의 수를 사이사이에 집어넣을 수 있나? (ex : SNUPC 2018 실버런)
+      \item DP State를 어떻게 나타낼 것인가? 첫 $i$개만을 이용한 답을 알면 $i+1$개째가 들어왔을 때 빠르게 처리할 수 있을까?
+      \item 더 큰 table에서 시작해서 줄여가기. 특히 Memory가 모자라다면 Toggling으로 차원 하나 내릴 수 있는 경우도 상당히 많이 있다. 각 칸의 갱신 시간과 칸의 개수 찾기.
+      \item Square root Decomposition : $O(n \log n)$ 이 생각나면 좋을 것 같지만 잘 생각나지 않고, 제한을 보니 $O(n \sqrt{n})$ 이면 될것도 같이 생겼을 때 생각해 보기. $O(\sqrt{n})$ 버킷 테크닉.
+      \item 복잡도가 맞는데 왜인지 안 뚫리면 : 필요없는 long long을 사용하지 않았나? map이나 set iterator들을 보면서 상수 커팅. 간단한 함수들을 inlining. 재귀를 반복문으로. 특히 Set과 Map은 끔찍하게 느리다.
+      \item 마지막 생각 : 조금 추하지만 해싱이나 Random 또는 \texttt{bitset} 을 이용한 $n^2 / 64$ 같은걸로 뚫을 수 있나? 컴파일러를 믿고 $10^8$의 몇 배 정도까지는 내 봐도 될 수도. 의외로 Naive한 문제가 많다.
     \end{itemize}
-\newpage
-\section*{업데이트 노트 / To-Do}
-\textbf{이 페이지는 실제 인쇄 팀노트에 포함되지 않습니다}
-\begin{itemize}
-  \item 190731 : Rabin-Karp Hashing 추가.
-  \item To-do : LCA 코드에 최단 / 최장 거리 간선, 거리 구하기 추가.
-  \item 190731 : Segment Tree Lazy Propagation 추가.
-  \item 190731 : Segment Tree Struct 구현체로 변경.
-  \item To-do : HLD 코드 넣기.
-  \item To-do : Trie 구현체 두가지 방식 넣기.
-\columnbreak
-\end{itemize}
 \end{multicols}
 \end{document}

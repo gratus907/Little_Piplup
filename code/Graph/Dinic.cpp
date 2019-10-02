@@ -1,62 +1,85 @@
-//Original Author : https://plzrun.tistory.com/
-
-int r[V][V]; // flow capacity
-bool chk[V][V]; // edge existence
-int level[V];
-vector<int> v[V];
-queue<int> q;
-
-bool bfs(int src, int sink)
+struct Edge
 {
-    memset(level,-1,sizeof(level));
-    level[src]=0;
-    q.push(src);
-    while(!q.empty())
+    int u, v;
+    ll cap, flow;
+    Edge() {}
+    Edge(int u, int v, ll cap): u(u), v(v), cap(cap), flow(0) {}
+};
+
+struct Dinic
+{
+    int N;
+    vector<Edge> E;
+    vector<vector<int>> g;
+    vector<int> d, pt;
+
+    Dinic(int N): N(N), E(0), g(N), d(N), pt(N) {}
+
+    void AddEdge(int u, int v, ll cap)
     {
-        int x = q.front();
-        q.pop();
-        for(int y: v[x])
+        if (u != v)
         {
-            if(r[x][y]>0 && level[y]<0) {
-                level[y]=level[x]+1;
-                q.push(y);
-            }
+            E.push_back(Edge(u, v, cap));
+            g[u].push_back(E.size() - 1);
+            E.push_back(Edge(v, u, 0));
+            g[v].push_back(E.size() - 1);
         }
     }
-    return level[sink]>=0;
-}
 
-int work[V];
-
-int dfs(int x, int sink, int f)
-{
-    if(x==sink) return f;
-    for(int &i=work[x]; i<v[x].size(); i++)
+    bool BFS(int S, int T)
     {
-        int y=v[x][i];
-        if(level[y]>level[x] && r[x][y]>0)
+        queue<int> q({S});
+        fill(d.begin(), d.end(), N + 1);
+        d[S] = 0;
+        while(!q.empty())
         {
-            int t = dfs(y,sink,min(f,r[x][y]));
-            if(t>0)
+            int u = q.front();
+            q.pop();
+            if (u == T) break;
+            for (int k: g[u])
             {
-                r[x][y]-=t;
-                r[y][x]+=t;
-                return t;
+                Edge &e = E[k];
+                if (e.flow < e.cap && d[e.v] > d[e.u] + 1)
+                {
+                    d[e.v] = d[e.u] + 1;
+                    q.push(e.v);
+                }
             }
         }
+        return d[T] != N + 1;
     }
-    return 0;
-}
 
-int dinic(int src, int sink)
-{
-    int flow=0;
-    while(bfs(src,sink))
+    ll DFS(int u, int T, ll flow = -1)
     {
-        int f=0;
-        memset(work,0,sizeof(work));
-        while((f=dfs(src,sink,INT_MAX))>0)
-            flow+=f;
+        if (u == T || flow == 0) return flow;
+        for (int &i = pt[u]; i < g[u].size(); i++)
+        {
+            Edge &e = E[g[u][i]];
+            Edge &oe = E[g[u][i]^1];
+            if (d[e.v] == d[e.u] + 1)
+            {
+                ll amt = e.cap - e.flow;
+                if (flow != -1 && amt > flow) amt = flow;
+                if (ll pushed = DFS(e.v, T, amt))
+                {
+                    e.flow += pushed;
+                    oe.flow -= pushed;
+                    return pushed;
+                }
+            }
+        }
+        return 0;
     }
-    return flow;
-}
+
+    ll MaxFlow(int S, int T)
+    {
+        ll total = 0;
+        while (BFS(S, T))
+        {
+            fill(pt.begin(), pt.end(), 0);
+            while (ll flow = DFS(S, T))
+                total += flow;
+        }
+        return total;
+    }
+};

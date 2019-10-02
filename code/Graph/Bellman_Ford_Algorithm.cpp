@@ -2,11 +2,9 @@ struct Edge
 {
     int u, v, w;
 };
-
 vector <Edge> edgelist;
 int V, E;
 int dist[V+1];
-
 bool relax_all_edge()
 {
     bool flag = false;
@@ -21,7 +19,6 @@ bool relax_all_edge()
     }
     return flag;
 }
-
 int bellman_ford()
 {
     fill(dist,dist+V+2,INF);

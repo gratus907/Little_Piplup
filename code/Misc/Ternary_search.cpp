@@ -12,5 +12,5 @@ double ternary_search(double l, double r)
         else
             r = m2;
     }
-    return f(l);                    //return the maximum of f(x) in [l, r]
+    return f(l);    //return the maximum of f(x) in [l, r]
 }
