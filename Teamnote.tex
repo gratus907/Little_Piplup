@@ -24,7 +24,6 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
-\usepackage{layout}
 \pagestyle{fancy}
 \fancyhead[R]{Little Piplup}
 \fancyhead[L]{Seoul National University}
@@ -51,6 +50,7 @@
 
 \begin{document}
 {
+  \vspace*{0.5in}
   \setlength{\columnseprule}{0pt}
   \begin{multicols}{3}\raggedcolumns
   \vspace*{\fill}
@@ -90,15 +90,14 @@
 \section{Settings}
   \subsection{C++}
     \verbatiminput{./code/Header.cpp}
+
 \section{Data Structures}
   \subsection{Segment Tree - Range Minimum}
-     필요한 연산에 따라 적당히 수정해서 쓸 수 있는 SegTree 구현. Range minimum을 기준으로 작성.\\
-     배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
+     Range minimum, 0-based data.
      \verbatiminput{./code/Data_Structures/Range_Minimum_Query.cpp}
 
   \subsection{Segment Tree Lazy Propagation}
-     구간 업데이트 연산을 빠르게 하기 위한 Lazy Propagation이 적용된 SegTree.\\
-     배열이 0-base 인덱스인 것을 가정하고 작성되어 있음.
+     Lazy Propagation (Segment constant addition), 0-based data.
      \verbatiminput{./code/Data_Structures/Segment_Tree_Lazy.cpp}
 
   \subsection{Fenwick Tree}
@@ -115,10 +114,15 @@
         C_n = \frac{1}{n+1}\binom{2n}{n}
       \]
       \item Nim Game : Remember - XOR of all piles.
-      \item Lucas Formula : $\binom{n}{m} = \prod \binom{n_i}{m_i} \mod p$
+      \item Lucas Formula : $\binom{n}{m} \mod p = \prod \binom{n_i}{m_i} \mod p$
+      \item Sum of divisors of $n$ : About $n \log \log n$.
+      \item 어떤 수열을 $n$개의 증가하는 수열로 덮을 수 있다 $\leftrightarrow$ longest decreasing subsequence 의 길이가 $n$보다 작거나 같다. (Dilworth's Theorem)
     \end{itemize}
-
+  \subsection{Binomial Coefficient}
+    If faster method is needed : use modulo inverse
+    \verbatiminput{./code/Mathematics/Binomial.cpp}
   \subsection{Extended Euclidean Algorithm}
+    $(x, y)$ such that $ax + by = \gcd(a, b) = d$.
     \verbatiminput{./code/Mathematics/Extended_Euclidean_Algorithm.cpp}
 
   \subsection{Fast Modulo Exponentiation}
@@ -195,6 +199,7 @@
     %$\order{n^3}$ assignment problem
 
 \section{Shortest Path}
+  모든 간선의 가중치를 필요할 때마다 0으로 잘 초기화했는지 확인하기.
   \subsection{Dijkstra}
     $\order{E \log V}$ Single-Start-Shortest-Path.\\
     가중치에 음수 없는거 항상 확인하고 쓰기.
@@ -218,6 +223,7 @@
   \subsection{다이나믹 프로그래밍 최적화 기법}
   \subsubsection{Convex Hull Trick}
     dp[i] = $\min_{j < i}$ (dp[j] + a[i]b[j]) 이고, $b$가 단조 감소하며, (현재 구현 기준) $a$가 단조 증가할 때, 직선 \texttt{y = b[j]*x + dp[j]}들을 기준으로 해석해서 시간 복잡도를 줄인다.
+    \verbatiminput{./code/Dynamic_Programming/Convex_Hull_Trick.cpp}
   \subsubsection{Knuth Optimization}
     dp 점화식이 다음 조건을 만족할 때, $O(n^3)$ 을 $O(n^2)$ 로 줄인다.
     \begin{itemize}
@@ -246,6 +252,7 @@
 
 \section{String}
   \subsection{KMP Algorithm}
+    Pi 배열의 정의 : $str[0]$ 부터 $str[i]$ 까지 중 접두사가 접미사와 같은 부분만큼의 길이.
     \verbatiminput{./code/String/KMP.cpp}
   \subsection{Manacher's Algorithm}
     A[i] = $i$ 번을 중심으로 하는 가장 긴 팰린드롬이 되는 반지름.
@@ -260,7 +267,8 @@
 
 \section{Miscellaneous}
   \subsection{Binary and Ternary Search}
-    Preventing stupid mistakes by writing garbage instead of proper binary search.
+    Preventing stupid mistakes by writing garbage instead of proper binary search.\\
+    상황에 따라 lo와 hi 중 어느 쪽이 답인지 달라짐.
     \verbatiminput{./code/Misc/Binary_Search.cpp}
     Ternary search
     \verbatiminput{./code/Misc/Ternary_search.cpp}
@@ -286,7 +294,7 @@
       return (t + 1) | (((~t & -~t) - 1) >> (__builtin_ctz(v) + 1));
     }
   \end{verbatim}
-  \subsection{List of Useful Numbers}
+  \subsection{Prime numbers}
   \begin{verbatim}
     < 10^k    prime   # of prime          < 10^k            prime
     -------------------------------------------------------------
@@ -300,9 +308,39 @@
     8      99999989      5761455          17    99999999999999997
     9     999999937     50847534          18   999999999999999989
   \end{verbatim}
-\columnbreak
+  \subsection{Time Complexity of Algorithms}
+    \begin{itemize}
+      \item Map, Set : $\log n$ 삽입 삭제 탐색 , But very big constant
+      \item PBDS\_OST : $\log n$ 삽입 삭제 탐색 , But very very big constant
+      \item Segment Tree : $\log n$ change, $\log n$ query
+      \item Lazy Propagation : $\log n$ segment addition
+      \item Fenwick Tree : Same with Segtree but faster
+      \item DSU : Inverse Ackermann merge
+      \item GCD : $\log n$
+      \item Binary Exponentiation : $\log b$
+      \item Fast Fourier Transform : $n\log n$ 다항식 곱셈
+      \item Closest Pair DnC : $n \log n$
+      \item Graham Scan : $n \log n$
+      \item Topological Sort : $n$
+      \item LCA : Build time $n \log n$, 쿼리당 $\log n$
+      \item Kruskal, Prim : $n\log n$
+      \item Dijkstra : $E \log V$
+      \item Bellman Ford : $EV$
+      \item SPFA : $EV$ 이지만 매우 빠름
+      \item Floyd-Warshall : $V^3$
+      \item Convex Hull Trick : $n^2 \to n$
+      \item Knuth Opt : $n^3 \to n^2$
+      \item Longest Increasing Subsequence : $n \log n$
+      \item 0-1 Knapsack : $nw$
+      \item Longest Common Subsequence : $n^2$
+      \item Edit Distance : $n^2$
+      \item KMP : $N+M$ pattern matching
+      \item Manacher : $N$ palindrome finding
+      \item Trie : $M$ insert, $M$ erase, $M$ search
+      \item Binary, Ternary : $\log n$
+    \end{itemize}
 
-\pagebreak
+\newpage
 \section{Checkpoints}
   \subsection{Debugging}
 \begin{itemize}
@@ -313,8 +351,11 @@
   \item Segment Tree, Trie, Fenwick 등 Struct 구현체 사용할 때는 항상 내부의 $n$ 이 제대로 초기화되었는지 확인하기.
   \item Testcase가 여러 개인 문제는 항상 초기화 문제를 확인하기.
   \item iterator 주의 : .end() 는 항상 맨 끝 원소보다 하나 더 뒤의 iterator. erase쓸 때는 iterator++ 관련된 문제들에 주의해야 한다.
-  \item Memory Limit : Local variable은 int 10만개 정도까지만 사용. Global Variable의 경우 128MB면 대략 int 2000만 개까지는 잘 들어간다. long long은 그보다 당연히 적고... stack, queue, map, set 같은 특이한 컨테이너는 100만개를 잡으면 메모리가 버겁지만 vector 100만개는 잡아도 된다.
+  \item Memory Limit : Local variable은 int 10만개 정도까지만 사용. Global Variable의 경우 128MB면 대략 int 2000만 개까지는 잘 들어간다. long long은 절반. stack, queue, map, set 같은 특이한 컨테이너는 100만개를 잡으면 메모리가 버겁지만 vector 100만개는 잡아도 된다.
   \item Array out of Bound : 배열의 길이는 충분한가? Vector resize를 했다면 그것도 충분할까? 배열의 -1번에 접근한 적은 없는게 확실할까?
+  \item Binary Search : 제대로 짠 게 맞을까? 1 차이 날 때 / lo == hi 일 때 등등. Infinite loop 주의하기.
+  \item Graph : 반례 유의하기. Connected라는 말이 없으면 Disconnected. Acyclic 하다는 말이 없으면 Cycle 넣기, 특히 $A \leftrightarrow B$ 그래프로 2개짜리 사이클 생각하기.
+  \item Set과 map은 매우 느리다.
 \end{itemize}
   \subsection{Thinking}
     \begin{itemize}

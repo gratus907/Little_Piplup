@@ -3,17 +3,18 @@
 \contentsline {section}{\numberline {2}Data Structures}{3}% 
 \contentsline {subsection}{\numberline {2.1}Segment Tree - Range Minimum}{3}% 
 \contentsline {subsection}{\numberline {2.2}Segment Tree Lazy Propagation}{3}% 
-\contentsline {subsection}{\numberline {2.3}Fenwick Tree}{5}% 
+\contentsline {subsection}{\numberline {2.3}Fenwick Tree}{4}% 
 \contentsline {subsection}{\numberline {2.4}Disjoint Set Union (Union - Find)}{5}% 
 \contentsline {section}{\numberline {3}Mathematics}{5}% 
 \contentsline {subsection}{\numberline {3.1}Useful Mathematical Formula}{5}% 
-\contentsline {subsection}{\numberline {3.2}Extended Euclidean Algorithm}{6}% 
-\contentsline {subsection}{\numberline {3.3}Fast Modulo Exponentiation}{6}% 
-\contentsline {subsection}{\numberline {3.4}Modular Multiplicative Inverse}{6}% 
-\contentsline {subsection}{\numberline {3.5}Miller-Rabin Primality Testing}{6}% 
-\contentsline {subsection}{\numberline {3.6}Pollard-Rho Factorization}{7}% 
-\contentsline {subsection}{\numberline {3.7}Euler Totient}{7}% 
-\contentsline {subsection}{\numberline {3.8}Fast Fourier Transform}{7}% 
+\contentsline {subsection}{\numberline {3.2}Binomial Coefficient}{5}% 
+\contentsline {subsection}{\numberline {3.3}Extended Euclidean Algorithm}{6}% 
+\contentsline {subsection}{\numberline {3.4}Fast Modulo Exponentiation}{6}% 
+\contentsline {subsection}{\numberline {3.5}Modular Multiplicative Inverse}{6}% 
+\contentsline {subsection}{\numberline {3.6}Miller-Rabin Primality Testing}{6}% 
+\contentsline {subsection}{\numberline {3.7}Pollard-Rho Factorization}{7}% 
+\contentsline {subsection}{\numberline {3.8}Euler Totient}{7}% 
+\contentsline {subsection}{\numberline {3.9}Fast Fourier Transform}{7}% 
 \contentsline {section}{\numberline {4}Geometry}{8}% 
 \contentsline {subsection}{\numberline {4.1}CCW}{8}% 
 \contentsline {subsection}{\numberline {4.2}Point in polygon}{8}% 
@@ -36,21 +37,22 @@
 \contentsline {subsection}{\numberline {7.1}다이나믹 프로그래밍 최적화 기법}{16}% 
 \contentsline {subsubsection}{\numberline {7.1.1}Convex Hull Trick}{16}% 
 \contentsline {subsubsection}{\numberline {7.1.2}Knuth Optimization}{16}% 
-\contentsline {subsection}{\numberline {7.2}Longest Increasing Subsequence}{16}% 
+\contentsline {subsection}{\numberline {7.2}Longest Increasing Subsequence}{17}% 
 \contentsline {subsection}{\numberline {7.3}Largest Sum Subarray}{17}% 
-\contentsline {subsection}{\numberline {7.4}0-1 Knapsack}{17}% 
-\contentsline {subsection}{\numberline {7.5}Longest Common Subsequence}{17}% 
+\contentsline {subsection}{\numberline {7.4}0-1 Knapsack}{18}% 
+\contentsline {subsection}{\numberline {7.5}Longest Common Subsequence}{18}% 
 \contentsline {subsection}{\numberline {7.6}Edit Distance}{18}% 
-\contentsline {section}{\numberline {8}String}{18}% 
-\contentsline {subsection}{\numberline {8.1}KMP Algorithm}{18}% 
+\contentsline {section}{\numberline {8}String}{19}% 
+\contentsline {subsection}{\numberline {8.1}KMP Algorithm}{19}% 
 \contentsline {subsection}{\numberline {8.2}Manacher's Algorithm}{19}% 
 \contentsline {subsection}{\numberline {8.3}Trie}{19}% 
-\contentsline {subsection}{\numberline {8.4}Rabin-Karp Hashing}{19}% 
-\contentsline {section}{\numberline {9}Miscellaneous}{20}% 
-\contentsline {subsection}{\numberline {9.1}Binary and Ternary Search}{20}% 
-\contentsline {subsection}{\numberline {9.2}GCC Order Statistics Tree}{20}% 
+\contentsline {subsection}{\numberline {8.4}Rabin-Karp Hashing}{20}% 
+\contentsline {section}{\numberline {9}Miscellaneous}{21}% 
+\contentsline {subsection}{\numberline {9.1}Binary and Ternary Search}{21}% 
+\contentsline {subsection}{\numberline {9.2}GCC Order Statistics Tree}{21}% 
 \contentsline {subsection}{\numberline {9.3}Useful Bitwise Functions in C++}{21}% 
-\contentsline {subsection}{\numberline {9.4}List of Useful Numbers}{21}% 
-\contentsline {section}{\numberline {10}Checkpoints}{22}% 
-\contentsline {subsection}{\numberline {10.1}Debugging}{22}% 
-\contentsline {subsection}{\numberline {10.2}Thinking}{22}% 
+\contentsline {subsection}{\numberline {9.4}Prime numbers}{21}% 
+\contentsline {subsection}{\numberline {9.5}Time Complexity of Algorithms}{22}% 
+\contentsline {section}{\numberline {10}Checkpoints}{23}% 
+\contentsline {subsection}{\numberline {10.1}Debugging}{23}% 
+\contentsline {subsection}{\numberline {10.2}Thinking}{23}% 
