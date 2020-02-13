@@ -1,4 +1,3 @@
-
 int Kruskal()
 {
     int mstlen = 0;

@@ -2,30 +2,30 @@
 struct Disjoint_Set_Union
 {
     int parent[V], size[V];
-    Disjoint_Set_Union(int n = V-1)
+    Disjoint_Set_Union(int N = V-1)
     {
-        init(n);
+        init(N);
     }
-    void init(int n)
+    void init(int N)
     {
-        for(int i=1;i<=n;i++)
+        for(int i=1;i<=N;i++)
         {
             parent[i]=i;
             size[i]=1;
         }
     }
-    int Find(int k)
+    int Find(int K)
     {
-        while(k!=parent[k])
+        while(K!=parent[K])
         {
-            parent[k]=parent[parent[k]];
-            k=parent[k];
+            parent[K]=parent[parent[K]];
+            K=parent[K];
         }
-        return k;
+        return K;
     }
-    int getSize(int k)
+    int getSize(int K)
     {
-        return size[Find(k)];
+        return size[Find(K)];
     }
     void unite(int x, int y)
     {

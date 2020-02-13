@@ -15,44 +15,45 @@
 \contentsline {subsection}{\numberline {3.7}Pollard-Rho Factorization}{7}% 
 \contentsline {subsection}{\numberline {3.8}Euler Totient}{7}% 
 \contentsline {subsection}{\numberline {3.9}Fast Fourier Transform}{7}% 
-\contentsline {section}{\numberline {4}Geometry}{8}% 
-\contentsline {subsection}{\numberline {4.1}CCW}{8}% 
-\contentsline {subsection}{\numberline {4.2}Point in polygon}{8}% 
-\contentsline {subsection}{\numberline {4.3}Length of Segment Union}{8}% 
-\contentsline {subsection}{\numberline {4.4}Closest Pair Problem}{9}% 
-\contentsline {subsection}{\numberline {4.5}Convex Hull (Graham Scan)}{9}% 
-\contentsline {subsection}{\numberline {4.6}Intersection of Line Segment}{11}% 
-\contentsline {section}{\numberline {5}Graphs}{11}% 
-\contentsline {subsection}{\numberline {5.1}Topological Sorting}{11}% 
-\contentsline {subsection}{\numberline {5.2}Lowest Common Ancestor}{11}% 
-\contentsline {subsection}{\numberline {5.3}MST Kruskal Algorithm}{12}% 
-\contentsline {subsection}{\numberline {5.4}MST Prim Algorithm}{12}% 
-\contentsline {subsection}{\numberline {5.5}Dinic's Algorithm}{13}% 
-\contentsline {section}{\numberline {6}Shortest Path}{14}% 
-\contentsline {subsection}{\numberline {6.1}Dijkstra}{14}% 
-\contentsline {subsection}{\numberline {6.2}Bellman Ford}{14}% 
-\contentsline {subsection}{\numberline {6.3}SPFA Algorithm}{15}% 
-\contentsline {subsection}{\numberline {6.4}Floyd-Warshall}{15}% 
-\contentsline {section}{\numberline {7}Dynamic}{16}% 
-\contentsline {subsection}{\numberline {7.1}다이나믹 프로그래밍 최적화 기법}{16}% 
-\contentsline {subsubsection}{\numberline {7.1.1}Convex Hull Trick}{16}% 
-\contentsline {subsubsection}{\numberline {7.1.2}Knuth Optimization}{16}% 
-\contentsline {subsection}{\numberline {7.2}Longest Increasing Subsequence}{17}% 
-\contentsline {subsection}{\numberline {7.3}Largest Sum Subarray}{17}% 
-\contentsline {subsection}{\numberline {7.4}0-1 Knapsack}{18}% 
-\contentsline {subsection}{\numberline {7.5}Longest Common Subsequence}{18}% 
-\contentsline {subsection}{\numberline {7.6}Edit Distance}{18}% 
-\contentsline {section}{\numberline {8}String}{19}% 
-\contentsline {subsection}{\numberline {8.1}KMP Algorithm}{19}% 
-\contentsline {subsection}{\numberline {8.2}Manacher's Algorithm}{19}% 
-\contentsline {subsection}{\numberline {8.3}Trie}{19}% 
-\contentsline {subsection}{\numberline {8.4}Rabin-Karp Hashing}{20}% 
-\contentsline {section}{\numberline {9}Miscellaneous}{21}% 
-\contentsline {subsection}{\numberline {9.1}Binary and Ternary Search}{21}% 
-\contentsline {subsection}{\numberline {9.2}GCC Order Statistics Tree}{21}% 
-\contentsline {subsection}{\numberline {9.3}Useful Bitwise Functions in C++}{21}% 
-\contentsline {subsection}{\numberline {9.4}Prime numbers}{21}% 
-\contentsline {subsection}{\numberline {9.5}Time Complexity of Algorithms}{22}% 
-\contentsline {section}{\numberline {10}Checkpoints}{23}% 
-\contentsline {subsection}{\numberline {10.1}Debugging}{23}% 
-\contentsline {subsection}{\numberline {10.2}Thinking}{23}% 
+\contentsline {subsection}{\numberline {3.10}Berlekamp-Massey Algorithm}{8}% 
+\contentsline {section}{\numberline {4}Geometry}{10}% 
+\contentsline {subsection}{\numberline {4.1}CCW}{10}% 
+\contentsline {subsection}{\numberline {4.2}Point in polygon}{10}% 
+\contentsline {subsection}{\numberline {4.3}Length of Segment Union}{10}% 
+\contentsline {subsection}{\numberline {4.4}Closest Pair Problem}{10}% 
+\contentsline {subsection}{\numberline {4.5}Convex Hull (Graham Scan)}{11}% 
+\contentsline {subsection}{\numberline {4.6}Intersection of Line Segment}{12}% 
+\contentsline {section}{\numberline {5}Graphs}{12}% 
+\contentsline {subsection}{\numberline {5.1}Topological Sorting}{12}% 
+\contentsline {subsection}{\numberline {5.2}Lowest Common Ancestor}{13}% 
+\contentsline {subsection}{\numberline {5.3}MST Kruskal Algorithm}{14}% 
+\contentsline {subsection}{\numberline {5.4}MST Prim Algorithm}{14}% 
+\contentsline {subsection}{\numberline {5.5}Dinic's Algorithm}{14}% 
+\contentsline {section}{\numberline {6}Shortest Path}{16}% 
+\contentsline {subsection}{\numberline {6.1}Dijkstra}{16}% 
+\contentsline {subsection}{\numberline {6.2}Bellman Ford}{16}% 
+\contentsline {subsection}{\numberline {6.3}SPFA Algorithm}{17}% 
+\contentsline {subsection}{\numberline {6.4}Floyd-Warshall}{17}% 
+\contentsline {section}{\numberline {7}Dynamic}{17}% 
+\contentsline {subsection}{\numberline {7.1}다이나믹 프로그래밍 최적화 기법}{17}% 
+\contentsline {subsubsection}{\numberline {7.1.1}Convex Hull Trick}{17}% 
+\contentsline {subsubsection}{\numberline {7.1.2}Knuth Optimization}{18}% 
+\contentsline {subsection}{\numberline {7.2}Longest Increasing Subsequence}{18}% 
+\contentsline {subsection}{\numberline {7.3}Largest Sum Subarray}{19}% 
+\contentsline {subsection}{\numberline {7.4}0-1 Knapsack}{19}% 
+\contentsline {subsection}{\numberline {7.5}Longest Common Subsequence}{19}% 
+\contentsline {subsection}{\numberline {7.6}Edit Distance}{20}% 
+\contentsline {section}{\numberline {8}String}{20}% 
+\contentsline {subsection}{\numberline {8.1}KMP Algorithm}{20}% 
+\contentsline {subsection}{\numberline {8.2}Manacher's Algorithm}{21}% 
+\contentsline {subsection}{\numberline {8.3}Trie}{21}% 
+\contentsline {subsection}{\numberline {8.4}Rabin-Karp Hashing}{22}% 
+\contentsline {section}{\numberline {9}Miscellaneous}{22}% 
+\contentsline {subsection}{\numberline {9.1}Binary and Ternary Search}{22}% 
+\contentsline {subsection}{\numberline {9.2}GCC Order Statistics Tree}{22}% 
+\contentsline {subsection}{\numberline {9.3}Useful Bitwise Functions in C++}{23}% 
+\contentsline {subsection}{\numberline {9.4}Prime numbers}{23}% 
+\contentsline {subsection}{\numberline {9.5}Time Complexity of Algorithms}{23}% 
+\contentsline {section}{\numberline {10}Checkpoints}{25}% 
+\contentsline {subsection}{\numberline {10.1}Debugging}{25}% 
+\contentsline {subsection}{\numberline {10.2}Thinking}{25}% 

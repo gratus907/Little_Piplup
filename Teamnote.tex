@@ -148,7 +148,10 @@
     Compute $A(x) * B(x)$ in $O(n\log n)$ time.\\
     Convolution 빠르게 구하기 \[ c_j = \sum_{i = 0}^{j} a_i b_{j-i}\]
     \verbatiminput{./code/Mathematics/Fast_Fourier_Transform.cpp}
-
+  \subsection{Berlekamp-Massey Algorithm}
+    초항 $3k$ 개로 $k*k$ 행렬 전이를 갖는 문제를 선형점화식으로 변환 + Kitamasa method를 이용한 $k^2 \log n$ 시간 계산. 초항만 몇개 구하고 \texttt{guess\_nth\_term} 쓰면 ok. 점화식을 알때는 \texttt{get\_nth}로 키타마사만 쓰기.\\
+    Todo : FFT를 적용한 $k \log k \log n$ 키타마사 구현하기.
+    \verbatiminput{./code/Mathematics/Berlekamp_Massey.cpp}
 \section{Geometry}
   \subsection{CCW}
     \verbatiminput{./code/Geometry/CCW.cpp}
