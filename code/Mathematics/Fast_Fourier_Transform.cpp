@@ -54,6 +54,7 @@ void multiply(const vi &a, const vi &b, vi &res)
     int n = 1;
     while(n < max(sz(a),sz(b)))
         n <<= 1;
+    n <<= 1;
     fa_big.resize(n);
     fa_small.resize(n);
     fb_big.resize(n);
@@ -91,8 +92,26 @@ void multiply(const vi &a, const vi &b, vi &res)
         int bs = (int64_t)round(fa_big[i].real());
         int bb = (int64_t)round(fa_big_2[i].real());
         res[i] = ss;
-        res[i] += (((((sb+bs)%P)*cut_val)%P)+P)%P;
-        res[i] += (((((bb*cut_val)%P)*cut_val)%P)+P)%P;
-        res[i] %= P;
+        res[i] += (sb+bs)*cut_val;
+        res[i] += bb*cut_val*cut_val;
     }
+}
+
+
+/* FFT polynomial Multiplication with less precision */
+void multiply(const vi &a, const vi &b, vi &res)
+{
+    vector <base> fa(all(a)), fb(all(b));
+    int n = 1;
+    while(n < max(sz(a),sz(b)))
+        n <<= 1;
+    n <<= 1;
+    fa.resize(n); fb.resize(n);
+    fft(fa,0), fft(fb,0);
+    for (int i = 0; i<n; i++)
+        fa[i] *= fb[i];
+    fft(fa,1);
+    res.resize(n);
+    for (int i = 0; i<n; i++)
+        res[i] = int64_t(fa[i].real()+(fa[i].real()>0?0.5:-0.5));
 }
