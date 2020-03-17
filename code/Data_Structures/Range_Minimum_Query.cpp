@@ -19,7 +19,6 @@ struct Range_Minimum_Tree
         int rmin = initialize(data, mid + 1, r, node * 2 + 1);
         return segtree[node] = min(lmin, rmin);
     }
-
     int minq(int l, int r, int node, int nodeleft, int noderight)
     {
         if (r < nodeleft || noderight < l)
@@ -29,5 +28,30 @@ struct Range_Minimum_Tree
         int mid = (nodeleft + noderight) / 2;
         return min(minq(l,r,node*2,nodeleft,mid),
         minq(l,r,node*2+1,mid+1,noderight));
+    }
+    void update(int left,int right,int node, int change_node ,int diff)
+    {
+        if (!(left <= change_node &&change_node <= right))
+            return;
+        if (left == right)
+        {
+            segtree[node] += diff;
+        }
+        if (left != right)
+        {
+            int mid = (left + right) / 2;
+            update(left, mid, node * 2, change_node, diff);
+            update(mid +1,right, node * 2 +1, change_node, diff);
+            segtree[node] = min(segtree[node*2], segtree[node*2+1]);
+        }
+    }
+    void update(int change_node, int diff)
+    {
+        update(0,n-1,1,change_node,diff);
+    }
+    void update_to(int change_node, int to)
+    {
+        int u = sumq(change_node, change_node);
+        update(change_node, to-u);
     }
 };
