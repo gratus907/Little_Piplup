@@ -3,6 +3,7 @@ bool equal(double a, double b, double tol = 1e-12)
     return abs(a-b)<=tol;
 }
 
+double cross(point a, point b);
 struct point
 {
     double x, y;
@@ -22,8 +23,19 @@ struct point
     {
         return x*x+y*y;
     }
-};
+    bool operator<(const point &other)
+    {
+        if((pi(a.x, a.y) > pi(0, 0)) ^ (pi(b.x, b.y) > pi(0, 0))) return pi(a.x, a.y) > pi(b.x, b.y);
 
+		if(cross(a, b) != 0) return cross(a, b) > 0;
+
+		return hypot(a) < hypot(b);
+    }
+};
+double cross(point a, point b)
+{
+    return a.x*b.y-a.y*b.x;
+}
 double normsq(point a)
 {
     return a.x*a.x+a.y*a.y;
@@ -31,10 +43,6 @@ double normsq(point a)
 double inner(point a, point b)
 {
     return a.x*b.x+a.y*b.y;
-}
-double cross(point a, point b)
-{
-    return a.x*b.y-a.y*b.x;
 }
 struct line_segment
 {
