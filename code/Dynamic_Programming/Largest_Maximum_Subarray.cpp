@@ -1,15 +1,11 @@
-void consecsum(int n)
+int kadane(vector <int> &arr)
 {
-    dp[0] = number[0];
-    for (int i = 1; i<n; i++)
-        dp[i] = MAX(dp[i-1]+number[i],number[i]);
-}
-
-int maxsum(int n)
-{
-    consecsum(n);
-    int max_sum=-INF;
-    for (int i = 0; i<n; i++)
-        dp[i] > max_sum ? max_sum = dp[i] : 0;
-    return max_sum;
+	int nn = arr.size();
+	int lm = arr[0], gm = arr[0];
+	for (int i = 1; i<nn; i++)
+	{
+		lm = max(arr[i], lm+arr[i]);
+		gm = max(gm, lm);
+	}
+	return gm;
 }

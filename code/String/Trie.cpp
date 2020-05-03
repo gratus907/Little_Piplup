@@ -1,36 +1,48 @@
+const int MAX_NODES = 26;
+inline int getnext(char x)
+{
+    return x-'a';
+}
 struct Trie
 {
-    int trie[NODE_MAX][CHAR_N];
-    int nxt = 1;
-    void insert(const char* s)
+    Trie *next[MAX_NODES];
+    int cnt;
+    bool ends;
+    Trie()
     {
-        int k = 0;
-        for (int i = 0; s[i]; i++)
-        {
-            int t = s[i] - 'a';
-            if (!trie[k][t])
-            {
-                trie[k][t] = nxt;
-                nxt++;
-            }
-            k = trie[k][t];
-        }
-        trie[k][26] = 1;
+        fill(next, next+MAX_NODES, nullptr);
+        cnt = ends = 0;
     }
-    bool find(const char* s, bool exact = false)
+    ~Trie()
     {
-        int k = 0;
-        for (int i = 0; s[i]; i++)
+        for (auto &it:next)
+            if (it) delete it;
+    }
+    void insert(char *str)
+    {
+        if (*str==0)
+            ends = true;
+        else
         {
-            int t = s[i] - 'a';
-            if (!trie[k][t])
-                return false;
-            k = trie[k][t];
+            int nxt = getnext(*str);
+            if (!next[nxt])
+            {
+                next[nxt] = new Trie();
+                cnt++;
+            }
+            next[nxt]->insert(str+1);
         }
-        if (exact)
+    }
+    int query(char* str, int k)
+    {
+        if (*str == 0)
+            return k;
+        else
         {
-            return trie[k][26];
+            if (cnt > 1 || ends)
+                k++;
+            int nxt = getnext(*str);
+            return next[nxt]->query(str+1, k);
         }
-        return true;
     }
 };
