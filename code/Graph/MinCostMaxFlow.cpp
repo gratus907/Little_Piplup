@@ -1,18 +1,19 @@
-const int INF = 0x7f7f7f7f7f7f7f7f;
-const int MX = 820;
 struct MCMF
 {
     vector <int> G[MX];
     int cap[MX][MX] = {0};
     int cost[MX][MX] = {0};
     int flow[MX][MX] = {0};
-    pair<int, int> MinCostMaxFlow(int source, int sink)
-    // Maxflow, mincost of flow
+    void addEdge(int s, int e)
+    {
+        G[s].push_back(e);
+        G[e].push_back(s);
+    }
+    pair<int, int> MinCostMaxFlow(int source, int sink) // Maxflow, mincost of flow
     {
         int maxflow = 0, mincost = 0;
         while(true)
         {
-            int fflow = 0;
             int dist[MX], prev[MX];
             bool inQ[MX];
             fill(inQ, inQ+MX, 0);
@@ -31,8 +32,7 @@ struct MCMF
                 {
                     int nxt = G[here][i];
                     int cst = cost[here][nxt];
-                    if(cap[here][nxt]-flow[here][nxt] > 0
-                    && dist[nxt] > dist[here] + cst)
+                    if(cap[here][nxt]-flow[here][nxt] > 0 && dist[nxt] > dist[here] + cst)
                     {
                         dist[nxt] = dist[here] + cst;
                         prev[nxt] = here;
@@ -51,27 +51,17 @@ struct MCMF
             }
             if(prev[sink] == -1)
                 break;
-            fflow = INF;
+            int curmaxflow = INF;
             for(int i=sink; i!=source; i=prev[i])
-                fflow = min(maxflow, cap[prev[i]][i] - flow[prev[i]][i]);
+                curmaxflow = min(curmaxflow, cap[prev[i]][i] - flow[prev[i]][i]);
             for(int i=sink; i!=source; i=prev[i])
             {
-                mincost += fflow * cost[prev[i]][i];
-                flow[prev[i]][i] += fflow;
-                flow[i][prev[i]] -= fflow;
+                mincost += curmaxflow * cost[prev[i]][i];
+                flow[prev[i]][i] += curmaxflow;
+                flow[i][prev[i]] -= curmaxflow;
             }
-            maxflow += maxflow;
+            maxflow += curmaxflow;
         }
         return {maxflow, mincost};
-    }
-    void AddEdge(int u, int v, int cp, int cs)
-    {
-        if (u != v)
-        {
-            G[u].push_back(v); G[v].push_back(u);
-            cap[u][v] = cp;
-            cost[u][v] = cs;
-            cost[v][u] = -cs;
-        }
     }
 };
