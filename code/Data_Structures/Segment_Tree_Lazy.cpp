@@ -4,11 +4,6 @@ struct SegTree
     vector <int> segtree;
     vector <int> lazy;
 
-    SegTree()
-    {
-        n = 0;
-    }
-
     SegTree(vector <int> &data)
     {
         n = data.size();
@@ -45,11 +40,7 @@ struct SegTree
         }
     }
 
-    void range_upd(int s, int e, int k)
-    {
-        return range_upd(s,e,k,1,0,n-1);
-    }
-
+    //range_upd(s,e,k,1,0,n-1);
     void range_upd(int s, int e, int k, int node, int nl, int nr)
     {
         propagation(node,nl,nr);
@@ -69,11 +60,7 @@ struct SegTree
         return;
     }
 
-    int sum(int s, int e)
-    {
-        return sum(s,e,1,0,n-1);
-    }
-
+    //sum(s,e,1,0,n-1)
     int sum(int s, int e, int node, int nl, int nr)
     {
         propagation(node,nl,nr);
@@ -86,5 +73,4 @@ struct SegTree
         int mid = (nl+nr)/2;
         return (sum(s,e,node*2,nl,mid) + sum(s,e,node*2+1,mid+1,nr));
     }
-
 };

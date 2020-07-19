@@ -27,7 +27,7 @@ struct SEG
         if (l <= nodeleft && noderight <= r)
             return segtree[node];
         int mid = (nodeleft + noderight) / 2;
-        return sumq(l,r,node*2,nodeleft,mid)+sumq(l,r,node*2+1,mid+1,noderight));
+        return sumq(l,r,node*2,nodeleft,mid)+sumq(l,r,node*2+1,mid+1,noderight);
     }
     int sumq(int l, int r)
     {

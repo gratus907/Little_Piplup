@@ -1,5 +1,3 @@
-// Original ref http://www.secmem.org/blog/2019/11/15/2D-segment-tree/
-// Slightly Modified 
 auto gif = [](int a, int b){return a+b;};
 class SEG2D
 {
@@ -7,13 +5,6 @@ public:
     int n;
     int m;
     vector <vector <int>> tree;
-    SEG2D(int n = 0, int m = 0)
-    {
-        tree.resize(2*n);
-        for (int i = 0; i<2*n; i++) tree[i].resize(2*m);
-        this->n = n;
-        this->m = m;
-    }
     SEG2D(int n, int m, vector<vector<int>> &data)
     {
         tree.resize(2*n);
@@ -81,16 +72,5 @@ public:
             }
         }
         return res;
-    }
-    void print()
-    {
-        for (int i = 0; i<2*n; i++)
-        {
-            for (int j = 0; j< 2*m; j++)
-            {
-                printf("%lld ",tree[i][j]);
-            }
-            printf("\n");
-        }
     }
 };

@@ -121,17 +121,23 @@
 \end{multicols}
 \begin{multicols}{2}\raggedcolumns
 
+
+\section{Settings}
+  \subsection{C++}
+    \verbatiminput{./code/Header.cpp}
+
 \section{Data Structures}
+  \subsection{Segment Tree - Range Minimum}
+  query(a, b) : $[a, b]$ minimum element\\
+  update(p, x) : add $x$ to index $p$
+     \verbatiminput{./code/Data_Structures/Range_Minimum_Query.cpp}
+  \pagebreak
   \subsection{Segment Tree Lazy Propagation}
   range\_upd(s, e, k) : add $k$ to $[s, e]$\\
   sum(s, e) : $[s, e]$ summation
      \verbatiminput{./code/Data_Structures/Segment_Tree_Lazy.cpp}
   \pagebreak
-  \subsection{Merge sort Tree}
-  Greater $(s, e, k)$ : Number of elements Larger than $k$ in $[s, e)$
-    \verbatiminput{./code/Data_Structures/merge_sort_tree.cpp}
   \subsection{2D Segment Tree}
-  point update and rectangle sum query
     \verbatiminput{./code/Data_Structures/2D_Seg.cpp}
 
   \subsection{Fenwick Tree}
@@ -147,13 +153,14 @@
       \[
         C_n = \frac{1}{n+1}\binom{2n}{n}
       \]
-      \item Binomial Coefficient $\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$
       \item Nim Game : Remember - XOR of all piles.
       \item Lucas Formula : $\binom{n}{m} \mod p = \prod \binom{n_i}{m_i} \mod p$
       \item Sum of divisors of $n$ : About $n \log \log n$.
       \item 어떤 수열을 $n$개의 증가하는 수열로 덮을 수 있다 $\leftrightarrow$ longest decreasing subsequence 의 길이가 $n$보다 작거나 같다. (Dilworth's Theorem)
     \end{itemize}
-
+  \subsection{Binomial Coefficient}
+    If faster method is needed : use modulo inverse
+    \verbatiminput{./code/Mathematics/Binomial.cpp}
   \subsection{Extended Euclidean Algorithm}
     $(x, y)$ such that $ax + by = \gcd(a, b) = d$.
     \verbatiminput{./code/Mathematics/Extended_Euclidean_Algorithm.cpp}
@@ -162,6 +169,9 @@
   Calculating \texttt{$x^y$ mod $p$} in $\order{\log y}$ time.
     \verbatiminput{./code/Mathematics/Fast_Modulo_Exponentiation.cpp}
 
+  \subsection{Modular Multiplicative Inverse}
+    \verbatiminput{./code/Mathematics/Modular_Inverse.cpp}
+
   \subsection{Miller-Rabin Primality Testing}
   Base values of $a$ chosen so that results are tested to be correct up to $10^{14}$.
     \verbatiminput{./code/Mathematics/Miller_Rabin_Test.cpp}
@@ -169,19 +179,22 @@
   \subsection{Pollard-Rho Factorization}
     \verbatiminput{./code/Mathematics/Pollard_Rho_Algorithm.cpp}
 
+  \subsection{Euler Totient}
+  Calculating number of integers below $n$ which is coprime with $n$.
+    \verbatiminput{./code/Mathematics/Euler_Phi_Function.cpp}
+
+
   \subsection{Fast Fourier Transform}
     Compute $A(x) * B(x)$ in $O(n\log n)$ time.\\
     Convolution 빠르게 구하기 \[ c_j = \sum_{i = 0}^{j} a_i b_{j-i}\]
     \verbatiminput{./code/Mathematics/Fast_Fourier_Transform.cpp}
-
   \subsection{Berlekamp-Massey Algorithm}
     초항 $3k$ 개로 $k*k$ 행렬 전이를 갖는 문제를 선형점화식으로 변환 + Kitamasa method를 이용한 $k^2 \log n$ 시간 계산. 초항만 몇개 구하고 \texttt{guess\_nth\_term} 쓰면 ok. 점화식을 알때는 \texttt{get\_nth}로 키타마사만 쓰기.\\
     Todo : FFT를 적용한 $k \log k \log n$ 키타마사 구현하기.
     \verbatiminput{./code/Mathematics/Berlekamp_Massey.cpp}
 \section{Geometry}
-
-  \subsection{Graham Scan + Rotating Calipers}
-    \verbatiminput{./code/Geometry/Convex_Hull.cpp}
+  \subsection{CCW}
+    \verbatiminput{./code/Geometry/CCW.cpp}
 
   \subsection{Point in polygon}
     Returns boolean, if point is in the polygon (represented as vector of points).
@@ -193,11 +206,16 @@
     Requires : Points must be sorted with x-axis.\\
     Runs in $\mathcal{O}(n \log^2 n)$
     \verbatiminput{./code/Geometry/Closest_pair.cpp}
+  \subsection{Graham Scan + Rotating Calipers}
+    \verbatiminput{./code/Geometry/Graham_scan_Rot_cal.cpp}
 
   \subsection{Intersection of Line Segment}
     \verbatiminput{./code/Geometry/Line_Segment_Intersection.cpp}
 
 \section{Graphs}
+  \subsection{Topological Sorting}
+  Topological sorting with dfs
+    \verbatiminput{./code/Graph/Topological_Sort.cpp}
 
   \subsection{Lowest Common Ancestor}
   LCA Algorithm by sparse table.\\
@@ -205,14 +223,19 @@
   maxlen : $(x, y)$ 사이를 잇는 간선 중 최대 길이 간선.
     \verbatiminput{./code/Graph/Lowest_Common_Ancestor.cpp}
 
+  \subsection{MST Kruskal Algorithm}
+  Based on Union-Find implementation\\
+  $\order{E \log E}$ if path-compressed Union Find.
+    \verbatiminput{./code/Graph/Kruskal_MST.cpp}
+
   \subsection{MST Prim Algorithm}
     \verbatiminput{./code/Graph/Prim_MST.cpp}
 
   \subsection{Dinic's Algorithm}
     \verbatiminput{./code/Graph/Dinic.cpp}
 
-  \subsection{SCC with 2-SAT Solving}
-    \verbatiminput{./code/Graph/Twosat_Cosaraju.cpp}
+  \subsection{Cosaraju SCC Algorithm}
+    \verbatiminput{./code/Graph/Cosaraju_Algorithm.cpp}
 
  \subsection{MCMF}
     \verbatiminput{./code/Graph/MinCostMaxFlow.cpp}
@@ -223,10 +246,17 @@
   %\subsection{Hungarian Algorithm}
     %$\order{n^3}$ assignment problem
 
+\section{Shortest Path}
+  모든 간선의 가중치를 필요할 때마다 0으로 잘 초기화했는지 확인하기.
   \subsection{Dijkstra}
     $\order{E \log V}$ Single-Start-Shortest-Path.\\
     가중치에 음수 없는거 항상 확인하고 쓰기.
       \verbatiminput{./code/Graph/Dijkstra_Algorithm.cpp}
+
+  \subsection{Bellman Ford}
+    $\order{EV}$ Single-Start-Shortest-Path.\\
+    Not working for graph with minus cycle $\rightarrow$ must detect.
+      \verbatiminput{./code/Graph/Bellman_Ford_Algorithm.cpp}
 
   \subsection{SPFA Algorithm}
     Average $\order{E}$, worst $\order{VE}$.

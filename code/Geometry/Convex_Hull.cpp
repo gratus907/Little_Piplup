@@ -71,6 +71,7 @@ public:
         }
     }
     void rotating_calipers()
+    // a, b : Furthest distance point
     {
         int msz = 0;
         int t = 0;

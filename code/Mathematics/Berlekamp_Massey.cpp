@@ -1,7 +1,7 @@
 /*
     BerlekampMassey Algorithm Implementation :
     No touch unless absolutely necessary
-    Implementation : Koosaga
+    Implementation : copied Koosaga library :(
 */
 const int mod = 1000000007;
 using lint = long long;
@@ -84,10 +84,9 @@ int guess_nth_term(vector<int> x, lint n){
     if(v.empty()) return 0;
     return get_nth(v, x, n);
 }
-struct elem{int x, y, v;}; // A_(x, y) <- v, 0-based. no duplicate please..
+struct elem{int x, y, v;};
 vector<int> get_min_poly(int n, vector<elem> M)
 {
-    // smallest poly P such that A^i = sum_{j < i} {A^j \times P_j}
     vector<int> rnd1, rnd2;
     mt19937 rng(0x14004);
     auto randint = [&rng](int lb, int ub){

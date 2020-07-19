@@ -1,9 +1,9 @@
-struct Range_Minimum_Tree
+struct Segtree
 {
     int n;
     vector<int> segtree;
 
-    Range_Minimum_Tree(const vector<int> &data)
+    Segtree(const vector<int> &data)
     {
         n = data.size();
         segtree.resize(4 * n);
@@ -19,15 +19,15 @@ struct Range_Minimum_Tree
         int rmin = initialize(data, mid + 1, r, node * 2 + 1);
         return segtree[node] = min(lmin, rmin);
     }
-    int minq(int l, int r, int node, int nodeleft, int noderight)
+    int query(int l, int r, int node, int nodeleft, int noderight)
     {
         if (r < nodeleft || noderight < l)
             return INT_MAX;
         if (l <= nodeleft && noderight <= r)
             return segtree[node];
         int mid = (nodeleft + noderight) / 2;
-        return min(minq(l,r,node*2,nodeleft,mid),
-        minq(l,r,node*2+1,mid+1,noderight));
+        return min(query(l,r,node*2,nodeleft,mid),
+        query(l,r,node*2+1,mid+1,noderight));
     }
     void update(int left,int right,int node, int change_node ,int diff)
     {

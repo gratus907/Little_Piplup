@@ -1,6 +1,6 @@
-// Original Author : Ashishgup
 struct Disjoint_Set_Union
 {
+    #define V 101010
     int parent[V], size[V];
     Disjoint_Set_Union(int N = V-1)
     {
@@ -23,10 +23,6 @@ struct Disjoint_Set_Union
         }
         return K;
     }
-    int getSize(int K)
-    {
-        return size[Find(K)];
-    }
     void unite(int x, int y)
     {
         int u=Find(x), v=Find(y);
@@ -38,4 +34,4 @@ struct Disjoint_Set_Union
         size[u] = 0;
         parent[u] = parent[v];
     }
-} dsu;
+};
