@@ -1,29 +1,33 @@
-using pii = pair<int, int>;
-#define int ll
-const int INF = 2e18;
-struct Line // Linear function ax + b
-{
-    int a, b;
-    int eval(int x)
-    {
-    return a*x + b;
-    }
-};
-
-struct Node
-{
-    int left, right;
-    int start, end;
-    Line f;
-};
-Node new_node(int a, int b)
-{
-    return {-1,-1,a,b,{0,-INF}};
-}
-vector <Node> nodes;
-
+/*
+Objective
+(1) Line insert query (ax + b)
+(2) Max / Min on x = t query
+Current Implementation : Max query
+*/
 struct LiChao
 {
+    struct Line // Linear function ax + b
+    {
+        int a, b;
+        int eval(int x)
+        {
+            return a*x + b;
+        }
+    };
+    struct Node // [start, end] has line f
+    {
+        int left, right;
+        int start, end;
+        Line f;
+    };
+
+    Node new_node(int a, int b)
+    {
+        return {-1,-1,a,b,{0,-INF}};
+    }
+
+    vector <Node> nodes;
+
     void init(int min_x, int max_x)
     {
         nodes.push_back(new_node(min_x, max_x));
@@ -62,45 +66,20 @@ struct LiChao
             insert(nodes[n].right,llo);
         }
     }
-
+    void insert(Line f)
+    {
+        insert(0, f);
+    }
     int get(int n, int q)
     {
         if (n == -1) return -INF;
         int xl = nodes[n].start, xr = nodes[n].end;
         int xm = (xl + xr)/2;
-        if (q > xm)
-            return max(nodes[n].f.eval(q), get(nodes[n].right, q));
-        else
-            return max(nodes[n].f.eval(q), get(nodes[n].left, q));
+        if (q > xm) return max(nodes[n].f.eval(q), get(nodes[n].right, q));
+        else return max(nodes[n].f.eval(q), get(nodes[n].left, q));
     }
-
-    int evaluate(int pt)
+    int get(int pt)
     {
         return get(0, pt);
     }
 };
-LiChao CHT;
-int32_t main()
-{
-    usecppio
-    int Q;
-        CHT.init(-2e12, 2e12);
-    cin >> Q;
-    while(Q--)
-    {
-        int tp;
-        cin >> tp;
-        if (tp == 1)
-        {
-            int a, b;
-            cin >> a >> b;
-            CHT.insert(0, {a, b});
-        }
-        else
-        {
-            int x;
-            cin >> x;
-            cout << CHT.evaluate(x) << '\n';
-        }
-    }
-}

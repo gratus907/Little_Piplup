@@ -50,6 +50,7 @@ pii lca(int x, int y)
     }
     if (x==y)
         return {minlen, maxlen};
+        // x is lca point
     for (int i = 20; i>=0; i--)
     {
         if (par[x][i] != par[y][i])
@@ -65,9 +66,10 @@ pii lca(int x, int y)
 
     int lca_point = par[x][0];
     return {minlen,maxlen};
+    // lca_point is lca point
 }
 
-void tobedone()
+void lca_construction()
 {
     dfs(1,0);
     precomputation();
